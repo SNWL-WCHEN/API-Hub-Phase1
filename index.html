@@ -128,7 +128,7 @@
   /* ---------- Hero ---------- */
   .hero{
     padding:48px 28px 32px;
-    max-width:1400px; margin:0 auto;
+    max-width:1500px; margin:0 auto;
   }
   .hero h1{
     font-family:var(--font-head);
@@ -175,9 +175,9 @@
   /* ---------- Workspace ---------- */
   .workspace{
     display:grid;
-    grid-template-columns:240px 1fr 300px;
+    grid-template-columns:280px 1fr 340px;
     gap:0;
-    max-width:1400px; margin:0 auto;
+    max-width:1500px; margin:0 auto;
     border-top:1px solid var(--border-soft);
     min-height:70vh;
   }
@@ -193,23 +193,35 @@
   .rail-item{
     display:flex; align-items:center; justify-content:space-between;
     width:100%; text-align:left; background:none; border:none; color:var(--text-secondary);
-    font-size:13.5px; padding:7px 8px; border-radius:5px;
+    font-size:14.5px; padding:9px 10px; border-radius:5px; line-height:1.35;
     transition:background .12s ease, color .12s ease;
   }
   .rail-item:hover{ background:var(--bg-surface); color:var(--text-primary);}
   .rail-item.active{ background:var(--bg-elevated); color:var(--text-primary); font-weight:600;}
-  .rail-item .n{ font-family:var(--font-mono); font-size:11.5px; color:var(--text-muted);}
+  .rail-item .n{ font-family:var(--font-mono); font-size:12.5px; color:var(--text-muted); flex-shrink:0; padding-left:8px;}
   .rail-item.active .n{ color:var(--teal);}
 
-  .cat-filter-wrap{ padding:0 8px; margin-bottom:8px;}
+  .cat-filter-wrap{ padding:0 10px; margin-bottom:10px;}
   .cat-filter-wrap input{
     width:100%; background:var(--bg-surface); border:1px solid var(--border);
-    border-radius:5px; color:var(--text-primary); font-size:12.5px;
-    padding:6px 8px; font-family:var(--font-body);
+    border-radius:5px; color:var(--text-primary); font-size:13.5px;
+    padding:8px 10px; font-family:var(--font-body);
   }
   .cat-filter-wrap input:focus{ border-color:var(--teal); }
   .cat-filter-wrap input::placeholder{ color:var(--text-muted); }
-  .cat-list-scroll{ max-height:320px; overflow-y:auto; }
+  .cat-list-wrap{ display:flex; gap:6px; }
+  .cat-list-scroll{ max-height:460px; overflow-y:auto; flex:1; min-width:0; }
+  .cat-az-index{
+    display:flex; flex-direction:column; align-items:center; gap:1px;
+    padding-top:4px; flex-shrink:0; width:24px;
+  }
+  .cat-az-btn{
+    font-size:12px; font-weight:600; font-family:var(--font-mono); color:var(--border);
+    background:none; border:none; padding:1px 0; width:100%; cursor:default; line-height:1.2;
+    border-radius:3px;
+  }
+  .cat-az-btn.has-items{ color:var(--text-secondary); cursor:pointer; }
+  .cat-az-btn.has-items:hover{ color:#fff; font-weight:700; background:var(--teal); }
   .cat-empty{ padding:8px; font-size:12px; color:var(--text-muted); }
 
   .main{ padding:24px 32px; border-right:1px solid var(--border-soft); min-width:0;}
@@ -277,47 +289,66 @@
   .load-more-btn:hover{ background:var(--bg-elevated); }
 
   /* ---------- Detail / auth panel ---------- */
-  .detail{ padding:24px 24px; }
+  .detail{ padding:28px 26px; }
   .detail-title{
-    font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px;
+    font-size:11.5px; font-weight:600; text-transform:uppercase; letter-spacing:0.6px;
     color:var(--text-muted); margin-bottom:14px;
   }
   .detail-card{
     background:var(--bg-surface); border:1px solid var(--border-soft); border-radius:8px;
-    padding:16px; margin-bottom:20px; box-shadow:var(--shadow-sm);
+    padding:18px; margin-bottom:22px; box-shadow:var(--shadow-sm);
   }
   .detail-card .method-badge{ display:inline-block; padding:3px 8px; margin-bottom:10px;}
-  .detail-card .path{ font-family:var(--font-mono); font-size:13.5px; word-break:break-all; margin-bottom:8px;}
-  .detail-card .desc{ font-size:13px; color:var(--text-secondary); line-height:1.5; margin-bottom:12px;}
-  .detail-card .base{ font-size:11.5px; color:var(--text-muted); font-family:var(--font-mono); word-break:break-all;}
+  .detail-card .path{ font-family:var(--font-mono); font-size:14.5px; word-break:break-all; margin-bottom:9px;}
+  .detail-card .desc{ font-size:14px; color:var(--text-secondary); line-height:1.55; margin-bottom:14px;}
+  .detail-card .base{ font-size:12.5px; color:var(--text-muted); font-family:var(--font-mono); word-break:break-all;}
 
   .auth-box{
-    background:var(--bg-surface); border:1px solid var(--border-soft); border-radius:8px; padding:16px;
+    background:var(--bg-surface); border:1px solid var(--border-soft); border-radius:8px; padding:18px;
     box-shadow:var(--shadow-sm);
   }
-  .auth-box h4{ font-size:13.5px; font-weight:600; margin-bottom:8px;}
-  .auth-box p{ font-size:12.5px; color:var(--text-secondary); line-height:1.6; margin-bottom:10px;}
+  .auth-box h4{ font-size:14.5px; font-weight:600; margin-bottom:8px;}
+  .auth-box p{ font-size:13.5px; color:var(--text-secondary); line-height:1.6; margin-bottom:12px;}
+
+  .region-row{ display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+  .region-label{ font-size:11.5px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); flex-shrink:0; }
+  .region-pills{ display:flex; gap:7px; flex-wrap:wrap; }
+  .region-pill{
+    font-family:var(--font-mono); font-size:12px; font-weight:600;
+    padding:6px 12px; border-radius:999px; border:1px solid var(--border);
+    background:transparent; color:var(--text-muted); transition:all .12s ease;
+  }
+  .region-pill:hover{ border-color:var(--teal); color:var(--text-primary); }
+  .region-pill.active{ background:var(--teal-dim); border-color:var(--teal); color:var(--teal); }
+  .region-note{ font-size:12.5px; color:var(--text-muted); line-height:1.55; margin-bottom:14px; font-style:italic; }
+  .auth-base-row{
+    display:flex; flex-direction:column; gap:3px; margin-bottom:14px;
+    padding:10px 12px; background:var(--bg-elevated); border-radius:5px;
+  }
+  .auth-base-label{ font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-muted); }
+  .auth-base-value{ font-family:var(--font-mono); font-size:12.5px; color:var(--text-primary); word-break:break-all; }
+
   .auth-steps{ list-style:none; counter-reset:step; }
   .auth-steps li{
-    counter-increment:step; font-size:12.5px; color:var(--text-secondary);
-    padding-left:24px; position:relative; margin-bottom:8px; line-height:1.5;
+    counter-increment:step; font-size:13.5px; color:var(--text-secondary);
+    padding-left:28px; position:relative; margin-bottom:10px; line-height:1.55;
   }
   .auth-steps li::before{
     content:counter(step); position:absolute; left:0; top:0;
-    width:16px; height:16px; border-radius:50%; background:var(--teal-dim); color:var(--teal);
-    font-family:var(--font-mono); font-size:10px; font-weight:600;
+    width:18px; height:18px; border-radius:50%; background:var(--teal-dim); color:var(--teal);
+    font-family:var(--font-mono); font-size:11px; font-weight:600;
     display:flex; align-items:center; justify-content:center;
   }
   .code-block{
     background:var(--brand-navy); border:1px solid rgba(255,255,255,0.1); border-radius:6px;
-    padding:10px 12px; font-family:var(--font-mono); font-size:11.5px; color:#CFE0FF;
-    margin-top:10px; overflow-x:auto; white-space:pre;
+    padding:12px 14px; font-family:var(--font-mono); font-size:12.5px; color:#CFE0FF;
+    margin-top:12px; overflow-x:auto; white-space:pre;
   }
   .placeholder-hint{ font-size:12.5px; color:var(--text-muted); line-height:1.6;}
 
   /* ---------- Footer ---------- */
   .footer{
-    max-width:1400px; margin:0 auto; padding:24px 28px 40px;
+    max-width:1500px; margin:0 auto; padding:24px 28px 40px;
     border-top:1px solid var(--border-soft);
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
   }
@@ -479,11 +510,20 @@
 // Capture Client 517). Full population is a data-pipeline job.
 // ---------------------------------------------------------------
 const PRODUCTS = {
-  NSM: { label: "Network Security Manager", color: "#4FD1C5", base: "https://nsm-uswest.sonicwall.com/api/manager" },
-  SONICOS: { label: "SonicOS", color: "#F2A33D", base: "https://nsm-uswest.sonicwall.com/api/manager" },
-  CC: { label: "Capture Client", color: "#B69CF2", base: "https://captureclient-36.sonicwall.com/api" },
+  NSM: { label: "Network Security Manager", color: "#4FD1C5", base: "https://nsm-uswest.sonicwall.com/api/manager",
+    regionNote: "Base URL is the domain of the regional NSM portal your tenant logs into — US West shown here as the example we verified." },
+  SONICOS: { label: "SonicOS", color: "#F2A33D", base: "https://nsm-uswest.sonicwall.com/api/manager",
+    regionNote: "Served through the same regional NSM API Gateway as NSM." },
+  CC: { label: "Capture Client", color: "#B69CF2", base: "https://captureclient-36.sonicwall.com/api",
+    regions: [
+      { key: "NOAM", label: "NOAM", base: "https://captureclient-36.sonicwall.com/api" },
+      { key: "EMEA", label: "EMEA", base: "https://captureclient-36eu.sonicwall.com/api" },
+      { key: "MDR_NOAM", label: "MDR NOAM", base: "https://captureclient-mdr.sonicwall.com/api" },
+      { key: "MDR_EMEA", label: "MDR EMEA", base: "https://captureclienteu-mdr.sonicwall.com/api" },
+    ] },
   MSW: { label: "MySonicWall", color: "#F26B1D", base: "https://api.mysonicwall.com/api" },
-  CSE: { label: "Cloud Secure Edge", color: "#F2545B", base: "https://net.banyanops.com/api/v1" },
+  CSE: { label: "Cloud Secure Edge", color: "#F2545B", base: "https://net.banyanops.com/api/v1",
+    regionNote: "Command Center domain is tenant-specific — use the domain for your organization's instance." },
 };
 
 const AUTH = {
@@ -5632,7 +5672,17 @@ const ENDPOINTS = [
 // State
 // ---------------------------------------------------------------
 ENDPOINTS.forEach((e,i) => e._idx = i);
-let state = { product: "ALL", category: "ALL", methods: new Set(), query: "", pageSize: 100 };
+let state = { product: "ALL", category: "ALL", methods: new Set(), query: "", pageSize: 100, ccRegion: "NOAM" };
+let selectedEndpoint = null;
+
+function selectedBase(productKey){
+  const p = PRODUCTS[productKey];
+  if(p.regions){
+    const r = p.regions.find(r => r.key === state.ccRegion) || p.regions[0];
+    return r.base;
+  }
+  return p.base;
+}
 
 const CAT_ACRONYMS = {
   ipv4: "IPv4", ipv6: "IPv6", vpn: "VPN", dns: "DNS", nsm: "NSM", msw: "MSW",
@@ -5738,13 +5788,28 @@ function renderRailCategories(){
 
   const allBtn = `<button class="rail-item ${state.category==='ALL'?'active':''}" data-cat="ALL"><span>All categories</span><span class="n">${cats.reduce((s,c)=>s+c.n,0)}</span></button>`;
   const items = filtered.length
-    ? filtered.map(c => `<button class="rail-item ${state.category===c.cat?'active':''}" data-cat="${c.cat}"><span>${c.label}</span><span class="n">${c.n}</span></button>`).join("")
+    ? filtered.map(c => `<button class="rail-item ${state.category===c.cat?'active':''}" data-letter="${c.label[0].toUpperCase()}" data-cat="${c.cat}"><span>${c.label}</span><span class="n">${c.n}</span></button>`).join("")
     : `<div class="cat-empty">No categories match "${catFilterQuery}"</div>`;
+
+  const presentLetters = new Set(filtered.map(c => c.label[0].toUpperCase()));
+  const azHtml = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(l =>
+    `<button class="cat-az-btn ${presentLetters.has(l) ? 'has-items' : ''}" data-letter="${l}" ${presentLetters.has(l) ? '' : 'disabled'}>${l}</button>`
+  ).join("");
 
   el.innerHTML = `
     <div class="cat-filter-wrap"><input type="text" id="catFilterInput" placeholder="Filter categories…" value="${catFilterQuery}" autocomplete="off"></div>
-    <div class="cat-list-scroll">${allBtn}${items}</div>
+    <div class="cat-list-wrap">
+      <div class="cat-list-scroll" id="catListScroll">${allBtn}${items}</div>
+      ${filtered.length > 15 ? `<div class="cat-az-index">${azHtml}</div>` : ""}
+    </div>
   `;
+
+  el.querySelectorAll(".cat-az-btn.has-items").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const target = el.querySelector(`.rail-item[data-letter="${btn.dataset.letter}"]`);
+      if(target) target.scrollIntoView({ block: "nearest" });
+    });
+  });
 
   el.querySelectorAll(".rail-item[data-cat]").forEach(btn=>{
     btn.addEventListener("click", ()=>{
@@ -5814,6 +5879,7 @@ function renderList(){
       el.querySelectorAll(".endpoint").forEach(r=>r.classList.remove("selected"));
       row.classList.add("selected");
       renderDetail(ENDPOINTS[parseInt(row.dataset.idx)]);
+      selectedEndpoint = ENDPOINTS[parseInt(row.dataset.idx)];
     });
   });
   const loadMoreBtn = document.getElementById("loadMoreBtn");
@@ -5833,6 +5899,7 @@ function renderDetail(endpoint){
       <div class="detail-title">Authenticating</div>
       ${p ? renderAuthBox(p) : `<p class="placeholder-hint">Select an endpoint, or pick a product on the left, to see its auth flow and base URL here.</p>`}
     `;
+    wireRegionPills();
     return;
   }
   const auth = AUTH[endpoint.p];
@@ -5842,26 +5909,55 @@ function renderDetail(endpoint){
       <div class="method-badge ${endpoint.m}">${endpoint.m}</div>
       <div class="path">${endpoint.path}</div>
       <div class="desc">${endpoint.desc}</div>
-      <div class="base">${PRODUCTS[endpoint.p].base}</div>
+      <div class="base">${selectedBase(endpoint.p)}</div>
     </div>
     <div class="detail-title">Authenticating to ${PRODUCTS[endpoint.p].label}</div>
     ${renderAuthBox(endpoint.p, true)}
   `;
+  wireRegionPills();
 }
 
 function renderAuthBox(productKey, bare){
   const a = AUTH[productKey];
   if(!a) return "";
+  const p = PRODUCTS[productKey];
+  const base = selectedBase(productKey);
+
+  let regionHtml = "";
+  if(p.regions){
+    regionHtml = `
+      <div class="region-row">
+        <span class="region-label">Region</span>
+        <div class="region-pills">
+          ${p.regions.map(r => `<button class="region-pill ${state.ccRegion===r.key?'active':''}" data-region="${r.key}">${r.label}</button>`).join("")}
+        </div>
+      </div>`;
+  } else if(p.regionNote){
+    regionHtml = `<div class="region-note">${p.regionNote}</div>`;
+  }
+
   return `<div class="${bare ? '' : 'auth-box'}" style="${bare ? '' : ''}">
     ${bare ? `<div class="auth-box">` : ``}
     <p>${a.summary}</p>
+    ${regionHtml}
+    <div class="auth-base-row"><span class="auth-base-label">Base URL</span><span class="auth-base-value">${base}</span></div>
     <ol class="auth-steps">${a.steps.map(s=>`<li>${s}</li>`).join("")}</ol>
     <div class="code-block">${a.code}</div>
     ${bare ? `</div>` : ``}
   </div>`;
 }
 
+function wireRegionPills(){
+  document.querySelectorAll(".region-pill").forEach(btn => {
+    btn.addEventListener("click", () => {
+      state.ccRegion = btn.dataset.region;
+      renderDetail(selectedEndpoint);
+    });
+  });
+}
+
 function renderAll(){
+  selectedEndpoint = null;
   renderChips();
   renderRailProducts();
   renderRailCategories();
